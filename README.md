@@ -16,13 +16,13 @@ This repository contains the code for all the analysis relative to my master the
 <br>
 
 **/runGENIE3**
-- codes to submit jobs in cluster
+- scripts to submit jobs in cluster
 - codes to run GENIE3
 
 <br>
 
 **/runPIDC**
-- codes to submit jobs in cluster
+- scripts to submit jobs in cluster
 - codes to run PIDC
 
 <br>
