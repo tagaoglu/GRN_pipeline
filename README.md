@@ -2,12 +2,12 @@
 
 This repository contains the code for all the analysis relative to my master thesis « Gene Regulatory Network Inference from Single-cell Transcriptomic Data in Hepatocellular Carcinoma », in order to ensure the reproducibility of all the results and figures presented in this study.
 
+<br>
 
 **/functions**
 - additional functions
-
-
-***Data_preprocessing.R & Data_preprocessing_hep_perSample.R***
+<br>
+**Data_preprocessing.R & Data_preprocessing_hep_perSample.R**
 - Gene Filtering and Normalization
 - Create expression matrix to use as input for GRN algorithms
 
