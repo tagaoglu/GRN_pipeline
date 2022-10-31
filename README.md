@@ -53,8 +53,8 @@ This repository contains the code for all the analysis relative to my master the
 - Rank nodes by decreasing centrality measure, and then Define as "central" genes those within the top 20% of the ranking
 - Compute the overlapping between each set of hubs, visualizing with Venn diagrams
 - Test to validate the networks whether they are scale-free, by using a Kolmogorov-Smirnov test to compare the degree distribution of the networks to a theoretical power-law distribuiton
-  - 1. Visualizing scale-free distribution: histograms
-  - 2. Power-law fit to the degree distibution: scatter plots
+  - Visualizing scale-free distribution: histograms
+  - Power-law fit to the degree distibution: scatter plots
 - Compute and plot the multiplicity of each hub (i.e. # groups a given gene acts as a hub), in order to assess whether these hubs are specific to a       particular group (group-specific hubs) or whether they are hubs in several groups (ubiquitous hubs)
 - Define group-specific and shared hubs
 
