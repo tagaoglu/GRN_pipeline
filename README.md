@@ -6,39 +6,47 @@ This repository contains the code for all the analysis relative to my master the
 
 **/functions**
 - additional functions
+
 <br>
+
 **Data_preprocessing.R & Data_preprocessing_hep_perSample.R**
 - Gene Filtering and Normalization
 - Create expression matrix to use as input for GRN algorithms
 
+<br>
 
-***/runGENIE3 
+**/runGENIE3**
 - codes to submit jobs in cluster
 - codes to run GENIE3
 
+<br>
 
-***/runPIDC 
+**/runPIDC**
 - codes to submit jobs in cluster
 - codes to run PIDC
 
+<br>
 
-***Filtering_MostLikelyLinks.R
+**Filtering_MostLikelyLinks.R**
 - Extract and Save filtered versions of networks with the most likely links for later use
 
+<br>
 
-***Similarity_analysis.R 
+**Similarity_analysis.R** 
 - Evaluation of similarity between networks, with all cells and with random cells (25%)
 - Evaluation of similarity between networks, constructed by GENIE3 and PIDC
 - Plot boxplot for JI
 - Plot heat table
 
+<br>
 
-***TF_Motif_Analysis.R
+**TF_Motif_Analysis.R**
 - Run correlation, and extract active links and save
 - Run RcisTarget and save
 
+<br>
 
-***Network_analysis.R 
+**Network_analysis.R** 
 - Compute Centrality Measures (CM) for each node in each network : Degree, Betweenness, Closeness, Eigenvector, Pagerank
 - then also compute integrated centrality measure (aggregated rank)
 - Compute Correlation between CM
@@ -50,8 +58,9 @@ This repository contains the code for all the analysis relative to my master the
 - Compute and plot the multiplicity of each hub (i.e. # groups a given gene acts as a hub), in order to assess whether these hubs are specific to a       particular group (group-specific hubs) or whether they are hubs in several groups (ubiquitous hubs)
 - Define group-specific and shared hubs
 
+<br>
 
-***Critical_genes_analysis.R
+**Critical_genes_analysis.R**
 - Critical Genes Identification
 - Calculate 5 centrality metrics and then integrated centrality metrics
 - Plot Top10 Nodes 
@@ -59,16 +68,20 @@ This repository contains the code for all the analysis relative to my master the
 - Create Venn diagram to show the overlap of Nodes, and also to show the overlap of edges (gene pairs) across group-specific GRNs
 - Network Visualization with Top10 critical TFs highlighted
 
+<br>
 
-***goea_analysis.R 
+**goea_analysis.R** 
 - Perform Gene Ontology (using enrichGO) & KEGG pathway (using enrichKEGG) & MSigDb (using enricher) Enrichment Analysis
 - Visualize results using dotplots
     
+<br>
 
-***Differential_network_analysis.R
+**Differential_network_analysis.R**
 - Run CoDiNA algorithm to perform differential network analysis
 - Plot the network
 - Create table to summarize candidate key nodes
 - Perform Gene Ontology (using enrichGO) & KEGG pathway (using enrichKEGG) & MSigDb (using enricher) Enrichment Analysis
 - Visualize results using dotplots
+
+<br>
 
