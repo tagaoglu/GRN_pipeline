@@ -1,17 +1,5 @@
-DIRECTORIES:
-
-data/:
-- GRN_inputs (pre-processed gene expression data with different thresholds)
-- network (outputs of GRN algorithms, mainly weightMatrix and LinkList)
-- plots
-
-functions/:
+***/functions/:
 - additional functions
-
-
----
-
-R scripts & Slurm Scripts:
 
 ***Data_preprocessing.R & Data_preprocessing_hep_perSample.R=> 
 - Gene Filtering and Normalization
@@ -53,39 +41,23 @@ R scripts & Slurm Scripts:
 - Test to validate the networks whether they are scale-free, by using a Kolmogorov-Smirnov test to compare the degree distribution of the networks to a theoretical power-law distribuiton
   - 1. Visualizing scale-free distribution: histograms
   - 2. Power-law fit to the degree distibution: scatter plots
--COMPARISON:
-  1. NORMALvsVIRALvsNONVIRAL
-  2. NORMALvsTUMOR
-  3. hep_NORMAL_vs_allSAMPLES_atONCE
-  4. hep_NORMAL_vs_eachSAMPLE_separately
-    - Compute and plot the multiplicity of each hub (i.e. # groups a given gene acts as a hub), in order to assess whether these hubs are specific to a       particular group (group-specific hubs) or whether they are hubs in several groups (ubiquitous hubs)
-    - Define group-specific and shared hubs
+- Compute and plot the multiplicity of each hub (i.e. # groups a given gene acts as a hub), in order to assess whether these hubs are specific to a       particular group (group-specific hubs) or whether they are hubs in several groups (ubiquitous hubs)
+- Define group-specific and shared hubs
 
 
 ***Critical_genes_analysis.R =>
 - Critical Genes Identification
 - Calculate 5 centrality metrics and then integrated centrality metrics
--COMPARISON:
-  1. NORMALvsVIRALvsNONVIRAL
-  2. NORMALvsTUMOR
-  3. hep_NORMAL_vs_allSAMPLES_atONCE
-  4. hep_NORMAL_vs_eachSAMPLE_separately
-    - Plot Top10 Nodes 
-    - Create SummaryTable for Common&OverlappingSpecificNodes 
+- Plot Top10 Nodes 
+- Create SummaryTable for Common&OverlappingSpecificNodes 
 - Create Venn diagram to show the overlap of Nodes, and also to show the overlap of edges (gene pairs) across group-specific GRNs
 - Network Visualization with Top10 critical TFs highlighted
 
 
 ***goea_analysis.R =>
--COMPARISON:
-  1. NORMALvsVIRALvsNONVIRAL
-  2. NORMALvsTUMOR
-  3. hep_NORMAL_vs_allSAMPLES_atONCE
-  4. hep_NORMAL_vs_eachSAMPLE_separately
-    - Perform Gene Ontology (using enrichGO) & KEGG pathway (using enrichKEGG) & MSigDb (using enricher) Enrichment Analysis
-    - Visualize results using dotplots
-
-
+- Perform Gene Ontology (using enrichGO) & KEGG pathway (using enrichKEGG) & MSigDb (using enricher) Enrichment Analysis
+- Visualize results using dotplots
+    
 
 ***Differential_network_analysis.R
 - Run CoDiNA algorithm to perform differential network analysis
@@ -93,10 +65,3 @@ R scripts & Slurm Scripts:
 - Create table to summarize candidate key nodes
 - Perform Gene Ontology (using enrichGO) & KEGG pathway (using enrichKEGG) & MSigDb (using enricher) Enrichment Analysis
 - Visualize results using dotplots
-
-
-
-
-# Draft codes:
-***fgsea_analysis.R =>
-- Perform enrichment analysis
