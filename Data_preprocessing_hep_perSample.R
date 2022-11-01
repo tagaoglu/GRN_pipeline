@@ -18,23 +18,11 @@ integrated.seurat <- readRDS("data/merged.seurat.rds")
 # Get cell identity classes
 Idents(object = integrated.seurat)
 levels(x = integrated.seurat)
-#OLD:
-#[1] "Hepatocytes"    "T/NK-cells"     "Macrophages"    "Endothelial"    "Fibroblasts"    "Plasma_cells"   "B-cells"       
-#[8] "Mast_cells"     "pDCs"           "Cholangiocytes"
-
-#UP TO DATE:
 #[1] "T/NK-cells"     "Hepatocytes"    "Macrophages"    "Endothelial"    "Fibroblasts"    "Kupffer_cells"  "B-cells"   "Cholangiocytes"  "erythrocytes"  
 #[10] "pDCs"           "Plasma_cells"   "Mast_cells"
 
 
 table(integrated.seurat@meta.data$cluster_main_ctype)
-#OLD:
-#Hepatocytes     T/NK-cells    Macrophages    Endothelial    Fibroblasts   Plasma_cells        B-cells     Mast_cells 
-#19279          15025          11079           6021           2139            451            366            189 
-#pDCs Cholangiocytes 
-#115             87 
-
-#UP TO DATE:
 #T/NK-cells    Hepatocytes    Macrophages    Endothelial    Fibroblasts  Kupffer_cells        B-cells Cholangiocytes   erythrocytes           pDCs 
 #     76291          45252          42096          14513           4488           3062           2790           1892           1118            947 
 #Plasma_cells     Mast_cells 
@@ -42,11 +30,6 @@ table(integrated.seurat@meta.data$cluster_main_ctype)
 
 #To use later on for sanity-check new objects
 table(integrated.seurat@meta.data$sample)
-#OLD:
-# P67    P108  P123s2  P123s8    P191    P193    P199    P207     P207Gel   P210    P215   P220    P269    P275    P282C    P295    P297 
-#13823    3713    1771    1310    2627    1525     975    2240    1391      972    2298    3922    919     5048    5104     3934    3179 
-
-#UP TO DATE:
 # P67    P108   P123s2  P123s8   P191   P193    P199    P207    P207Gel     P210   P215    P220    P269    P275    P282C    P295    P297
 # 14312  4310   1779    1364     2646   1816    1004    2356    1499        1003   2907    4017    938     5170    5759     4140    4381
 # Andrews_2022_Donor_4         Guilliams_2022_H02         Guilliams_2022_H06            Guilliams_2022_H16            Payen_2021_158   
@@ -91,7 +74,7 @@ full_info$Sample[which(full_info$Sample_type == "Normal_liver")]
 # #P67  P297 =  HCV+steatosis !!!!!!
 # #Charlotte: "only consider HCV, steatosis and normal livers and omit those mixed and idiopathic." 
 # 
-# #P140  P142  P307 : excluded in the upstream analysis !!!!!
+# #P140  P142  P307 : excluded !!!!!
 
 
 ############################################################################
@@ -118,11 +101,6 @@ table(expData_tmp[["P207"]]@meta.data$sample)
 ############################################################################
 ### 2. Extract raw expression data for each cell cluster and subcluster
 
-#OLD:
-#levels <- c("Hepatocytes", "Endothelial", "Fibroblasts", "T/NK-cells", "B-cells", "Macrophages", "Mast_cells", "pDCs")
-#"Undefined_1", "Undefined_2", "Undefined_3" : not included in the list above
-
-#UP TO DATE:
 levels <- c("Hepatocytes")
 
 expData <- list() # to put expression data in a list for easier manipulation
@@ -171,7 +149,7 @@ source("functions/geneFiltering_mean.R")
 # You can adjust threshold according to your dataset
 # Default value: aveCounts_thr=0.25
 
-thr <- 2
+thr <- 1
 
 ##create an input file if it does not exist
 nam <- paste("expData_mean_", thr, sep = "")
@@ -197,16 +175,6 @@ for(group in names(expData_noMT)){
 
 # Save RDS for later use, required for GENIE3
 saveRDS(expData_filtered_log, file = paste0(inputs_dir, "expData_filtered_log.Rds"))  
-
-
-
-
-
-
-
-
-
-
 
 
 
