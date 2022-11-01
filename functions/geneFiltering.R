@@ -4,7 +4,7 @@
 #' @param minSamples Minimum number of samples (cells) in which the gene should be detected
 
 # Gene filter/selection
-#Before running GENIE3/GRNBoost, it is recommended to apply soft gene filter, to remove genes that are expressed either at very low levels or in too few cells. Here we apply a filtering based on the total number of counts of the gene, and the number of cells in which it is detected.
+#Before running GENIE3, it is recommended to apply soft gene filter, to remove genes that are expressed either at very low levels or in too few cells. Here we apply a filtering based on the total number of counts of the gene, and the number of cells in which it is detected.
 
 #First filter: Filter by the total number of reads per gene. This filter is meant to remove genes that are most likely noise. By default it keeps only the genes with at least 6 UMI counts across all samples/cells (e.g. the total number the gene would have, if it was expressed with a value of 3 in 10% of the cells). Adjust this value (minCountsPerGene) according to the dataset (it will depend on the dataset units, e.g. UMI, TPMs…).
 
