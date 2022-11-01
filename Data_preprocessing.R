@@ -17,7 +17,6 @@ integrated.seurat <- readRDS("data/merged.seurat.rds")
 # Get cell identity classes
 Idents(object = integrated.seurat)
 levels(x = integrated.seurat)
-
 #[1] "T/NK-cells"     "Hepatocytes"    "Macrophages"    "Endothelial"    "Fibroblasts"    "Kupffer_cells"  "B-cells"   "Cholangiocytes"  "erythrocytes"  
 #[10] "pDCs"           "Plasma_cells"   "Mast_cells"
 
@@ -25,7 +24,6 @@ levels(x = integrated.seurat)
 
 #To use later on for sanity-check new objects
 table(integrated.seurat@meta.data$sample)
-
 # P67    P108   P123s2  P123s8   P191   P193    P199    P207    P207Gel     P210   P215    P220    P269    P275    P282C    P295    P297
 # 14312  4310   1779    1364     2646   1816    1004    2356    1499        1003   2907    4017    938     5170    5759     4140    4381
 # Andrews_2022_Donor_4         Guilliams_2022_H02         Guilliams_2022_H06            Guilliams_2022_H16            Payen_2021_158   
