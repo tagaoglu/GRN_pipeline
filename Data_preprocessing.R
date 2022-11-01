@@ -11,18 +11,13 @@ library(Seurat)
 
 
 ##Load Data
-#load("old_data/data_v20220928/merged.seurat.RData")
 integrated.seurat <- readRDS("data/merged.seurat.rds")
 
 
 # Get cell identity classes
 Idents(object = integrated.seurat)
 levels(x = integrated.seurat)
-#OLD:
-#[1] "Hepatocytes"    "T/NK-cells"     "Macrophages"    "Endothelial"    "Fibroblasts"    "Plasma_cells"   "B-cells"       
-#[8] "Mast_cells"     "pDCs"           "Cholangiocytes"
 
-#UP TO DATE
 #[1] "T/NK-cells"     "Hepatocytes"    "Macrophages"    "Endothelial"    "Fibroblasts"    "Kupffer_cells"  "B-cells"   "Cholangiocytes"  "erythrocytes"  
 #[10] "pDCs"           "Plasma_cells"   "Mast_cells"
 
@@ -30,11 +25,7 @@ levels(x = integrated.seurat)
 
 #To use later on for sanity-check new objects
 table(integrated.seurat@meta.data$sample)
-#OLD:
-# P67    P108  P123s2  P123s8    P191    P193    P199    P207     P207Gel   P210    P215   P220    P269    P275    P282C    P295    P297 
-#13823    3713    1771    1310    2627    1525     975    2240    1391      972    2298    3922    919     5048    5104     3934    3179 
 
-#UP TO DATE:
 # P67    P108   P123s2  P123s8   P191   P193    P199    P207    P207Gel     P210   P215    P220    P269    P275    P282C    P295    P297
 # 14312  4310   1779    1364     2646   1816    1004    2356    1499        1003   2907    4017    938     5170    5759     4140    4381
 # Andrews_2022_Donor_4         Guilliams_2022_H02         Guilliams_2022_H06            Guilliams_2022_H16            Payen_2021_158   
@@ -79,7 +70,7 @@ full_info$Sample[which(full_info$Sample_type == "Normal_liver")]
 # #P67  P297 =  HCV+steatosis !!!!!!
 # #Charlotte: "only consider HCV, steatosis and normal livers and omit those mixed and idiopathic." 
 # 
-# #P140  P142  P307 : excluded in the upstream analysis !!!!!
+# #P140  P142  P307 : excluded !!!!!
 
 
 ############################################################################
@@ -92,10 +83,7 @@ groups <- c("tumor", "nonviral", "viral", "normal")
 
 # Since viral HCC include no cell for "Kupffer_cells", "erythrocytes", "Cholangiocytes", and nonviral HCC include only 1 cell for "erythrocytes", "Cholangiocytes" and no cell for "Kupffer_cells"
 # I will exclude these cell types for the following steps 
-#OLD:
-#levels <- c("Hepatocytes", "Endothelial", "Fibroblasts", "T/NK-cells", "B-cells", "Macrophages", "Mast_cells", "pDCs", "Plasma_cells", "Cholangiocytes")
 
-#UP TO DATE:
 levels <- c("Hepatocytes", "Endothelial", "Fibroblasts", "T/NK-cells", "B-cells", "Macrophages", "Mast_cells", "pDCs", "Plasma_cells")
 
 
@@ -184,7 +172,7 @@ source("functions/geneFiltering_mean.R")
 # You can adjust threshold according to your dataset
 # Default value: aveCounts_thr=0.25
 
-thr <- 2
+thr <- 1
 
 ##create an input file if it does not exist
 nam <- paste("expData_mean_", thr, sep = "")
@@ -278,7 +266,7 @@ saveRDS(expData_filtered_log, file = paste0(inputs_dir, "expData_filtered_log.Rd
 # Take just 25% of cells randomly for each 
 # In order to see how reliable our results are, and to see if the results of GRN algorithms depends on the number of cells
 
-thr <- 2
+thr <- 1
 
 # Load data
 nam <- paste("expData_mean_", thr, sep = "")
@@ -331,127 +319,5 @@ for(group in names(expData_filtered_log_RANDOM)){
 
 # Save RDS for later use, required for GENIE3
 saveRDS(expData_filtered_log_RANDOM, file = paste0(inputs_dir, "expData_filtered_log.Rds"))  
-
-
-
-
-
-
-############################################################################
-############################################################################
-############################################################################
-
-
-#The following is not finished yet
-
-
-############################################################################
-### Data extraction per sample
-
-#Extract raw expression data perSample , for each cell cluster and subcluster
-
-# ###viral HCC 
-# # P123s2  P123s8  P193  P199 
-#
-# ###non-viral HCC
-# # P108  P191  P207 P207Gel  P215    P220    P275   P282C    P295
-# 
-# ###normal liver
-# #P210 P269
-# 
-# # Side note  
-# #Others
-# #P67  P297 =  HCV+steatosis
-# #Charlotte: "only consider HCV, steatosis and normal livers and omit those mixed and idiopathic." 
-# 
-# #P140  P142  P307 : excluded in the upstream analysis
-
-#########################
-
-##create an input file if it does not exist
-nam <- paste("expMat", "_perSample", sep = "")
-inputs_dir= paste("~/p728/RSTUDIO/analysis/tagaoglu/data/inputs/", nam, "/", sep = "")
-if(!dir.exists(inputs_dir)){dir.create(inputs_dir, recursive = T)}
-
-
-#########################
-
-levels <- c("Hepatocytes", "Endothelial", "Fibroblasts", "T/NK-cells", "B-cells", "Macrophages", "Mast_cells", "pDCs")
-#"Undefined_1", "Undefined_2", "Undefined_3" : not included in the list above
-
-
-all_samples <- names(table(integrated.seurat@meta.data$sample))
-
-
-for(x in 1:length(all_samples)){
-  
-  x_nam = all_samples[x]
-  
-  ### Subset data for each SAMPLE
-  x_subset <- subset(x = integrated.seurat, subset = (sample == x_nam))
-  
-  x_list <- list() # to put expression data in a list for easier manipulation
-  for (i in levels) {
-    if (i %in% levels(x_subset@active.ident)){
-      x_list[[i]] <- as.matrix(GetAssayData(object = x_subset, assay = 'RNA', slot = "counts")[, WhichCells(x_subset, ident = i)])
-    }else{
-      next
-    }
-  }
-  
-  #Rename list items, B-cells and T/NK-cells
-  names(x_list)[names(x_list) == "T/NK-cells"] <- "T_NK_cells"
-  names(x_list)[names(x_list) == "B-cells"] <- "B_cells"
-  
-  ############################################################################
-  ### Filter out the mitochondrial (MT- ) genes
-  
-  #The list of top central genes is dominated by mitochondrial (MT-) genes.
-  #Therefore, these genes will not be retained for subsequent analysis steps.
-  for (i in names(x_list)) {
-    mt_genes <- grepl("^MT-",  rownames(x_list[[i]]))
-    mt_genes_list <- rownames(x_list[[i]])[mt_genes]
-    x_list[[i]] <- x_list[[i]][!(rownames(x_list[[i]]) %in% mt_genes_list), ]
-  }
-  
-  ############################################################################
-  ### Gene Filtering and Normalization
-  
-  # You can adjust threshold according to your dataset
-  # Default values: 
-  #minCountsPerGene=3*.1*ncol(expMat)
-  #minSamples=ncol(expMat)*.01
-  x_filtered_log <- list()
-  for (i in names(x_list)) {
-    if(as.numeric(dim(as.matrix(x_list[[i]]))[2]) != 1){
-      genesKept <- geneFiltering(x_list[[i]])
-      expMat_filtered <- x_list[[i]][genesKept, ]
-      expMat_filtered_log <- log2(expMat_filtered+1)
-      x_filtered_log[[i]] <- expMat_filtered_log
-      nam <- paste(x_nam, "_", i, "_expMat", sep = "")
-      write.table(x_filtered_log[[i]], file=paste0(inputs_dir, nam, ".tsv"), quote=FALSE, sep='\t', col.names = TRUE) # required for PIDC
-    }else{
-      next
-    }
-  }
-  
-  # save RData for later use, required for GENIE3
-  save(x_filtered_log, file=paste0(inputs_dir, x_nam, "_expMat.RData"))
-}
-
-############################################################################
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
