@@ -251,6 +251,7 @@ for(algo in names(net_centr_l_all)){
               bind_cols() %>% 
               ggplot(aes_string("degree", centr)) +
               geom_point(shape = 1, color = "#0071bd", size = 1.5, alpha = 0.5) +
+              stat_cor(method = "spearman", p.accuracy = 0.001, r.accuracy = 0.01) + # labeled with spearman correlation results
               scale_x_log10("DEGREE") +
               scale_y_log10(str_to_upper(centr)) +
               theme_classic() +
