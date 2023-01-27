@@ -91,7 +91,7 @@ This repository contains the code for all the analysis relative to my master the
 <br>
 
 **/figures**
-- some figures published in this work
+- figures published in this study
 
 ## List of Figures
 - **Figure 1: Summary of the workflow followed in this study**
