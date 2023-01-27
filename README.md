@@ -94,23 +94,23 @@ This repository contains the code for all the analysis relative to my master the
 - some figures published in this work
 
 ## List of Figures
-- Figure 1: Summary of the workflow followed in this study
-- Figure 2: Schematic diagram of GRN inference followed in this study
-- Figure 3: Schematic diagram of network centrality analysis followed in this study
-- Figure 4: Schematic diagram of differential network analysis followed in this study
-- Figure 5: Single-cell RNA-sequencing data of HCC and non-tumoral/normal livers with annotated cell clusters
-- Figure 6: Boxplots showing Jaccard Index of edges in two compared networks, one inferred by GENIE3 and the other inferred by PIDC, for different link thresholds
-- Figure 7: Single-cell gene regulatory networks inferred by GENIE3 are scale-free. 
+- **Figure 1: Summary of the workflow followed in this study**
+- **Figure 2: Schematic diagram of GRN inference followed in this study**
+- **Figure 3: Schematic diagram of network centrality analysis followed in this study**
+- **Figure 4: Schematic diagram of differential network analysis followed in this study**
+- **Figure 5: Single-cell RNA-sequencing data of HCC and non-tumoral/normal livers with annotated cell clusters**
+- **Figure 6: Boxplots showing Jaccard Index of edges in two compared networks, one inferred by GENIE3 and the other inferred by PIDC, for different link thresholds**
+- **Figure 7: Single-cell gene regulatory networks inferred by GENIE3 are scale-free.**         
 The degree distribution of the single-cell gene regulatory networks inferred by GENIE3, derived for four phenotypes, nonviral, viral, normal and tumor, and for each cell type, displayed in linear (histogram) and logarithmic scale (scatter plot). Each distribution was fitted to a theoretical power-law distribution, and the p-value of the Kolmogorov-Smirnov test (KS.p) and the degree exponent of the power-law (alpha) are labelled for each network. 
-- Figure 8: GRNs of each phenotype in Hepatocytes, inferred by GENIE3 
+- **Figure 8: GRNs of each phenotype in Hepatocytes, inferred by GENIE3**       
 Colored nodes imply the top 10 critical genes. (A-D) The GRNs of nonviral (A), viral (B), normal (C), tumor (D) 
-- Figure 9: Relationship between degree and other centralities for the GRNs inferred by GENIE3, for Hepatocytes 
+- **Figure 9: Relationship between degree and other centralities for the GRNs inferred by GENIE3, for Hepatocytes**        
 Scatter plots displaying relationship between degree and the other centralities (log-scale) for the GRNs inferred by GENIE3, derived for four phenotypes, nonviral, viral, normal and tumor, and for Hepatocytes. The p-value of the spearman correlation test (p) and the correlation coefficient (R) are labelled. 
-- Figure 10: The central genes of different metrics show overlap, but there are also some central genes which are specific for each metric 
+- **Figure 10: The central genes of different metrics show overlap, but there are also some central genes which are specific for each metric**     
 Venn diagrams showing the overlap of central genes (top 20% of ranked genes) of different centralities in the networks of four phenotypes, nonviral, viral, normal and tumor, for each cell type separately. 
-- Figure 11: Results for Hepatocytes, obtained from GRNs inferred by GENIE3 
+- **Figure 11: Results for Hepatocytes, obtained from GRNs inferred by GENIE3**       
 (A - B) Venn diagrams showing the overlap of network nodes (A) and network edges (B) across three phenotypes, normal, viral and nonviral. (C - D) Venn diagrams showing the overlap of network nodes (C) and network edges (D) across two phenotypes, normal and tumor. (E) The central genes (top 20%) of each of three phenotypes, normal, viral and nonviral, classified by their multiplicity for all tested centrality metrics. (F) The central genes (top 20%) of each of two phenotypes, normal and tumor, classified by their multiplicity for all tested centrality metrics. Multiplicity=1 means that they are central only in that particular phenotype, whereas multiplicity=2 and 3 means that they are central also in other phenotypes. (G - J) Ranks for central genes in the four phenotype-specific networks based on the integrated centrality measure. For each network, the top 10 TFs are labeled and colored in red. The blue arrow marks the critical genes present in both Top10 genes list and phenotype-specific hubs. 
-- Figure 12: Violin plots displaying expression levels of MT2A in each sample for Hepatocytes 
-- Figure 13: Functional exploration of phenotype-specific hubs in Hepatocytes 
+- **Figure 12: Violin plots displaying expression levels of MT2A in each sample for Hepatocytes**     
+- **Figure 13: Functional exploration of phenotype-specific hubs in Hepatocytes**       
 (A - B) Dot plots displaying enriched GO terms (BP) (A) and enriched Hallmark terms from MSigDB (B) in viral HCC, nonviral HCC and normal liver specific hubs. (C - D) Dot plots showing enriched GO terms (BP) (C) and enriched Hallmark terms from MSigDB (D) in tumor and normal liver specific hubs. The size of nodes represents the ratio of enriched genes; the color of the nodes corresponds to the adjusted p values. 
 
